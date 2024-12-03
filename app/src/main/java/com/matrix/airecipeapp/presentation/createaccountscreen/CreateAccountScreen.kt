@@ -1,8 +1,7 @@
-package com.matrix.airecipeapp.presentation
+package com.matrix.airecipeapp.presentation.createaccountscreen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.interaction.FocusInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,47 +14,51 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.matrix.airecipeapp.R
+import com.matrix.airecipeapp.presentation.viewmodels.AuthViewModel
 
 @Composable
-@Preview(showBackground = true)
-fun CreateAccountScreen() {
+fun CreateAccountScreen(
+    authViewModel: AuthViewModel
+) {
     var email by remember {
-        androidx.compose.runtime.mutableStateOf("")
+        mutableStateOf("")
 
     }
     var password by remember {
-        androidx.compose.runtime.mutableStateOf("")
+        mutableStateOf("")
 
     }
-    var uesrname by remember {
-        androidx.compose.runtime.mutableStateOf("")
+
+    var username by remember {
+        mutableStateOf("")
 
     }
+
+    val authState by authViewModel.authState.collectAsState()
+
     Column(modifier = Modifier.fillMaxSize()) {
         Box {
             Image(
@@ -93,10 +96,12 @@ fun CreateAccountScreen() {
             )
 
         }
+
         Column {
 
-            TextField(value = uesrname,
-                onValueChange = { uesrname = it },
+            TextField(
+                value = username,
+                onValueChange = { username = it },
                 placeholder = { Text(text = "User Name", fontSize = 15.sp) },
                 colors = TextFieldDefaults.colors(
                     unfocusedIndicatorColor = colorResource(
@@ -109,7 +114,9 @@ fun CreateAccountScreen() {
                     .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
-            TextField(value = email,
+
+            TextField(
+                value = email,
                 onValueChange = { email = it },
                 placeholder = { Text(text = "Your Email", fontSize = 15.sp) },
                 colors = TextFieldDefaults.colors(
@@ -123,7 +130,8 @@ fun CreateAccountScreen() {
                     .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
-            TextField(value = password,
+            TextField(
+                value = password,
                 onValueChange = { password = it },
                 placeholder = { Text(text = "Password", fontSize = 15.sp) },
                 colors = TextFieldDefaults.colors(
@@ -145,8 +153,9 @@ fun CreateAccountScreen() {
                 .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
         )
         {
+            // create account button
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { authViewModel.register(username = username,email=email,password=password ) },
                 modifier = Modifier.size(234.dp, 40.dp),
                 colors = ButtonDefaults.buttonColors(
                     contentColor = colorResource(
