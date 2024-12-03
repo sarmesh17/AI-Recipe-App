@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.matrix.airecipeapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.matrix.airecipeapp"
