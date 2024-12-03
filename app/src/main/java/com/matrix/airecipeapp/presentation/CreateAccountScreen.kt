@@ -47,6 +47,12 @@ fun CreateAccountScreen(){
     var email by remember {androidx.compose.runtime.mutableStateOf("")
 
     }
+    var password by remember {androidx.compose.runtime.mutableStateOf("")
+
+    }
+    var uesrname by remember {androidx.compose.runtime.mutableStateOf("")
+
+    }
     Column (modifier = Modifier.fillMaxSize()){
         Box {
             Image(painter = painterResource(id = R.drawable.imgofcreateacc), contentDescription =null, modifier = Modifier
@@ -71,6 +77,14 @@ fun CreateAccountScreen(){
 
         }
         Column {
+
+            TextField(value = uesrname, onValueChange = {uesrname = it}, placeholder = { Text(text = "User Name", fontSize = 15.sp)},
+                colors = TextFieldDefaults.colors(unfocusedIndicatorColor = colorResource(
+                    id = R.color.amber), focusedIndicatorColor = colorResource(id = R.color.amber),
+                    focusedContainerColor = Color.White, unfocusedContainerColor = Color.White), modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             TextField(value = email, onValueChange = {email = it}, placeholder = { Text(text = "Your Email", fontSize = 15.sp)},
                 colors = TextFieldDefaults.colors(unfocusedIndicatorColor = colorResource(
                 id = R.color.amber), focusedIndicatorColor = colorResource(id = R.color.amber),
@@ -78,7 +92,7 @@ fun CreateAccountScreen(){
                     .fillMaxWidth()
                     .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp))
             Spacer(modifier = Modifier.height(10.dp))
-            TextField(value = email, onValueChange = {email = it}, placeholder = { Text(text = "Password", fontSize = 15.sp)},
+            TextField(value = password, onValueChange = {password = it}, placeholder = { Text(text = "Password", fontSize = 15.sp)},
                 colors = TextFieldDefaults.colors(unfocusedIndicatorColor = colorResource(
                     id = R.color.amber), focusedIndicatorColor = colorResource(id = R.color.amber),
                     focusedContainerColor = Color.White, unfocusedContainerColor = Color.White), modifier = Modifier
@@ -86,7 +100,7 @@ fun CreateAccountScreen(){
                     .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp))
 
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Column (modifier = Modifier
             .height(250.dp)
             .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally)
