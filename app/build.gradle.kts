@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "2.1.0"
+
 }
 
 android {
@@ -66,4 +71,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    // Hilt Navigation Compose (if needed for navigation with Hilt)
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    // Ktor Client
+    implementation ("io.ktor:ktor-client-core:2.0.3")
+    implementation ("io.ktor:ktor-client-cio:2.0.3")
+    implementation ("io.ktor:ktor-client-serialization:2.0.3")
+    implementation ("io.ktor:ktor-client-content-negotiation:2.0.3")
+    implementation ("io.ktor:ktor-serialization-kotlinx-json:2.0.3")
+
 }
