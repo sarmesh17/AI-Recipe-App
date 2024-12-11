@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AIRecipeAppTheme {
 
-                CreateAccountScreen(authViewModel)
+//                CreateAccountScreen(authViewModel)
             }
         }
     }

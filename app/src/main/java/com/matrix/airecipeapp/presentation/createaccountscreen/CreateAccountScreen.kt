@@ -32,28 +32,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.matrix.airecipeapp.R
 import com.matrix.airecipeapp.presentation.viewmodels.AuthViewModel
 
-@Composable
-fun CreateAccountScreen() {
-val windowSize = rememberWindowSize()
-when(windowSize.width){
-    WindowType.Compact->{
-        CompactCreateAccountScreen(authViewModel = AuthViewModel())
-    }
-    else->{
 
-    }
-}
-}
 @Composable
 fun CompactCreateAccountScreen(
     authViewModel: AuthViewModel
-){
+) {
     var email by remember {
         mutableStateOf("")
 
@@ -166,7 +154,13 @@ fun CompactCreateAccountScreen(
         {
             // create account button
             Button(
-                onClick = { authViewModel.register(username = username,email=email,password=password ) },
+                onClick = {
+                    authViewModel.register(
+                        username = username,
+                        email = email,
+                        password = password
+                    )
+                },
                 modifier = Modifier.size(234.dp, 40.dp),
                 colors = ButtonDefaults.buttonColors(
                     contentColor = colorResource(
@@ -254,6 +248,7 @@ fun CompactCreateAccountScreen(
 
     }
 }
+
 @Composable
 fun MediumToExpandedCreateAccountScreen(
     authViewModel: AuthViewModel

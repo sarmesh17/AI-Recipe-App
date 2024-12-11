@@ -86,4 +86,8 @@ dependencies {
     implementation ("io.ktor:ktor-client-content-negotiation:2.0.3")
     implementation ("io.ktor:ktor-serialization-kotlinx-json:2.0.3")
 
+    // navigation
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.8.0-beta06")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }
