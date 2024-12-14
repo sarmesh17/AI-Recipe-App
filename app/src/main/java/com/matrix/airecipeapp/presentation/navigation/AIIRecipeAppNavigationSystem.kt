@@ -15,6 +15,7 @@ fun AiRecipeNavigationSystem(){
     NavHost(startDestination = Routes.CreateAccountScreen , navController = navController ) {
 
         composable<Routes.CreateAccountScreen> {
+
             val authViewModel:AuthViewModel= hiltViewModel()
 
         }

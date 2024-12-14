@@ -1,10 +1,10 @@
-package com.matrix.airecipeapp.presentation.createaccountscreen
+package com.matrix.airecipeapp
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 
 data class WindowSize(
-    val width:WindowType,
+    val width: WindowType,
     val height: WindowType
 )
 
@@ -13,7 +13,7 @@ data class WindowSize(
 
 }
 @Composable
-fun rememberWindowSize():WindowSize{
+fun rememberWindowSize(): WindowSize {
     val configuration= LocalConfiguration.current
     return WindowSize(
         width = when{
