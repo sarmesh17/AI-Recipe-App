@@ -35,10 +35,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.matrix.airecipeapp.R
+import com.matrix.airecipeapp.presentation.viewmodels.AuthViewModel
 
 @Composable
-@Preview(showBackground = true)
-fun LoginScreen() {
+fun LoginScreen(
+    authViewModel: AuthViewModel
+) {
     var email by remember {
         androidx.compose.runtime.mutableStateOf("")
 
@@ -46,6 +48,12 @@ fun LoginScreen() {
     var isChecked by remember {
         mutableStateOf(false)
     }
+    
+    var password by remember {
+        mutableStateOf("")
+    }
+
+
     Column(modifier = Modifier.fillMaxSize()) {
         Box {
             Image(
@@ -99,9 +107,11 @@ fun LoginScreen() {
                     .padding(top = 10.dp, bottom = 10.dp, start = 25.dp, end = 25.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
+
+            // password TextField
             TextField(
-                value = email,
-                onValueChange = { email = it },
+                value = password,
+                onValueChange = { password = it },
                 placeholder = { Text(text = "Password", fontSize = 15.sp) },
                 colors = TextFieldDefaults.colors(
                     unfocusedIndicatorColor = colorResource(
@@ -135,7 +145,7 @@ fun LoginScreen() {
         )
         {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { authViewModel.login(identifier = email,password=password) },
                 modifier = Modifier.size(234.dp, 40.dp),
                 colors = ButtonDefaults.buttonColors(
                     contentColor = colorResource(

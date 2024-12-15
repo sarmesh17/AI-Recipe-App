@@ -34,7 +34,7 @@ class AuthRepositoryImpl(private val client: HttpClient):AuthRepository {
 
     override suspend fun loginUser(identifier: String, password: String):AuthResponse {
 
-        return client.post("http://localhost:1337/api/auth/local"){
+        return client.post("http://10.0.2.2:1337/api/auth/local"){
             contentType(ContentType.Application.Json)
             setBody(LoginRequest(identifier, password))
         }.body()

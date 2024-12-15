@@ -42,6 +42,7 @@ class AuthViewModel @Inject constructor(
             try {
                 val response = loginUserUseCase(identifier,password)
                 _authState.value= response
+                Log.d("loginSuccesfull", response.toString())
             }catch (e: Exception){
 
                 e.localizedMessage?.let { Log.d("login", it) }

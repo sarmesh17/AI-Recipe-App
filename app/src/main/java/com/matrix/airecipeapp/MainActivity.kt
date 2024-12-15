@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.matrix.airecipeapp.presentation.createaccountscreen.CreateAccountScreen
+import com.matrix.airecipeapp.presentation.loginscreen.LoginScreen
 import com.matrix.airecipeapp.presentation.viewmodels.AuthViewModel
 import com.matrix.airecipeapp.ui.theme.AIRecipeAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +26,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AIRecipeAppTheme {
 
-                CreateAccountScreen(authViewModel)
+                LoginScreen(authViewModel = authViewModel)
+
+
             }
         }
     }
